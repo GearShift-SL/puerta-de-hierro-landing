@@ -25,18 +25,14 @@ export interface Props {
   actions?: Array<ActionLink>;
   isSticky?: boolean;
   isDark?: boolean;
-  isFullWidth?: boolean;
-  position?: string; // 'left', 'center', 'right'
 }
 
 const {
   id = 'header',
   links = [],
   actions = [],
-  isSticky = false,
-  isDark = false,
-  isFullWidth = false,
-  position = 'center',
+  isSticky = false,  // If true, the header will stick to the top of the page when scrolling
+  isDark = false,  // If true, the header will be dark
 } = Astro.props;
 
 const currentPath = `/${new URL(Astro.url).pathname}/`;
@@ -53,19 +49,11 @@ const currentPath = `/${new URL(Astro.url).pathname}/`;
   <div class="absolute inset-0"></div>
   <div
     class:list={[
-      'relative text-default py-3 px-3 md:px-6 mx-auto w-full',
-      {
-        'md:flex md:justify-between': position !== 'center',
-      },
-      {
-        'md:grid md:grid-cols-3 md:items-center': position === 'center',
-      },
-      {
-        'max-w-7xl': !isFullWidth,
-      },
+      'relative text-default py-3 px-3 md:px-6 mx-auto w-full md:grid md:grid-cols-3 md:items-center'
+      
     ]}
   >
-    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between w-full']}>
+    <div class="flex justify-between w-full">
       <a class="flex items-center" href={`/`}>
         <Logo class="h-10 w-auto" />
       </a>
@@ -129,7 +117,6 @@ const currentPath = `/${new URL(Astro.url).pathname}/`;
     </nav>
     <div
       class="hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0 md:justify-self-end"
-      class:list={[{ 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' }]}
     >
       <div class="items-center flex justify-between w-full md:w-auto gap-2">
         {
@@ -150,6 +137,59 @@ const currentPath = `/${new URL(Astro.url).pathname}/`;
 </header>
 
 <style>
+  @reference "../../styles/global.css";
+
+  /* Header scroll transition styles */
+  #header > div:last-child {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #header.scroll {
+    top: 0.75rem !important;
+    transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #header.scroll > div:last-child {
+    @apply bg-page md:bg-white/90 md:backdrop-blur-md;
+    box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
+    border-radius: 1rem;
+    margin: 0.5rem auto;
+    width: calc(100% - 1.5rem);
+    padding: 0.75rem 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    #header.scroll > div:last-child {
+      width: fit-content;
+    }
+  }
+
+  :global(.dark) #header.scroll > div:last-child,
+  #header.scroll.dark > div:last-child {
+    @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
+    box-shadow: none;
+    border-radius: 1rem;
+    margin: 0.5rem auto;
+    width: calc(100% - 1.5rem);
+    padding: 0.75rem 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    :global(.dark) #header.scroll > div:last-child,
+    #header.scroll.dark > div:last-child {
+      width: fit-content;
+    }
+  }
+
+  #header.expanded nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 70px !important;
+    padding: 0 5px;
+  }
+
   /* Mobile menu styles */
   #header.h-screen {
     display: flex;
