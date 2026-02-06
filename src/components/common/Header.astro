@@ -137,7 +137,7 @@ const currentPath = `/${new URL(Astro.url).pathname}/`;
             actions.map((action) => (
               <a
                 href={action.href}
-                class="cta-gradient font-bold py-2 px-4 rounded-lg inline-flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                class="cta-gradient font-bold py-2 px-4 rounded-lg inline-flex items-center gap-2 transition-colors"
               >
                 {action.icon && <Fragment set:html={action.icon} />}
                 {action.text}
