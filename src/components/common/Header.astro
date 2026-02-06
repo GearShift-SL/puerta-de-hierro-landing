@@ -24,6 +24,7 @@ export interface Props {
   links?: Array<MenuLink>;
   actions?: Array<ActionLink>;
   isSticky?: boolean;
+  isFullWidth?: boolean;
   isDark?: boolean;
 }
 
@@ -32,6 +33,7 @@ const {
   links = [],
   actions = [],
   isSticky = false,  // If true, the header will stick to the top of the page when scrolling
+  isFullWidth = false,  // If sticky is true, this will make the header full width when scrolling
   isDark = false,  // If true, the header will be dark
 } = Astro.props;
 
@@ -40,7 +42,7 @@ const currentPath = `/${new URL(Astro.url).pathname}/`;
 
 <header
   class:list={[
-    { sticky: isSticky, relative: !isSticky, dark: isDark },
+    { sticky: isSticky, relative: !isSticky, dark: isDark, 'full-width': isFullWidth },
     'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-opacity ease-in-out',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
@@ -49,8 +51,7 @@ const currentPath = `/${new URL(Astro.url).pathname}/`;
   <div class="absolute inset-0"></div>
   <div
     class:list={[
-      'relative text-default py-3 px-3 md:px-6 mx-auto w-full md:grid md:grid-cols-3 md:items-center'
-      
+      'relative text-default py-3 px-3 md:px-6 mx-auto w-full max-w-7xl md:grid md:grid-cols-3 md:items-center'
     ]}
   >
     <div class="flex justify-between w-full">
@@ -59,7 +60,7 @@ const currentPath = `/${new URL(Astro.url).pathname}/`;
       </a>
       {
         links.length > 0 && (
-          <div class="flex items-center md:hidden">
+          <div class:list={["flex items-center md:hidden", !isFullWidth && "ml-4"]}>
             <ToggleMenu />
           </div>
         )
@@ -154,13 +155,40 @@ const currentPath = `/${new URL(Astro.url).pathname}/`;
     box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
     border-radius: 1rem;
     margin: 0.5rem auto;
-    width: calc(100% - 1.5rem);
+    width: fit-content;
+    max-width: 80rem;
     padding: 0.75rem 1.5rem;
   }
 
+  #header.scroll.full-width > div:last-child {
+    width: calc(100% - 1.5rem);
+    max-width: 80rem;
+  }
+
+  /* When scrolled and not full-width: use flex layout instead of grid */
   @media (min-width: 768px) {
-    #header.scroll > div:last-child {
+    #header.scroll:not(.full-width) > div:last-child {
+      display: flex;
+      gap: 1.5rem;
       width: fit-content;
+      max-width: 80rem;
+    }
+
+    #header.scroll:not(.full-width) > div:last-child > div:first-child {
+      width: auto;
+    }
+
+    #header.scroll:not(.full-width) nav {
+      justify-self: auto;
+    }
+
+    #header.scroll:not(.full-width) > div:last-child > div:last-child {
+      justify-self: auto;
+    }
+
+    #header.scroll.full-width > div:last-child {
+      width: calc(100% - 1.5rem);
+      max-width: 80rem;
     }
   }
 
@@ -170,14 +198,36 @@ const currentPath = `/${new URL(Astro.url).pathname}/`;
     box-shadow: none;
     border-radius: 1rem;
     margin: 0.5rem auto;
-    width: calc(100% - 1.5rem);
+    width: fit-content;
+    max-width: 80rem;
     padding: 0.75rem 1.5rem;
   }
 
+  :global(.dark) #header.scroll.full-width > div:last-child,
+  #header.scroll.dark.full-width > div:last-child {
+    width: calc(100% - 1.5rem);
+    max-width: 80rem;
+  }
+
+  /* Dark mode: when scrolled and not full-width: use flex layout instead of grid */
   @media (min-width: 768px) {
-    :global(.dark) #header.scroll > div:last-child,
-    #header.scroll.dark > div:last-child {
+    :global(.dark) #header.scroll:not(.full-width) > div:last-child,
+    #header.scroll.dark:not(.full-width) > div:last-child {
+      display: flex;
+      gap: 1.5rem;
       width: fit-content;
+      max-width: 80rem;
+    }
+
+    :global(.dark) #header.scroll:not(.full-width) > div:last-child > div:first-child,
+    #header.scroll.dark:not(.full-width) > div:last-child > div:first-child {
+      width: auto;
+    }
+
+    :global(.dark) #header.scroll.full-width > div:last-child,
+    #header.scroll.dark.full-width > div:last-child {
+      width: calc(100% - 1.5rem);
+      max-width: 80rem;
     }
   }
 
