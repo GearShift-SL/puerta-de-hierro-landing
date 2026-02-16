@@ -59,7 +59,7 @@ export const SITE = (): SiteConfig => {
             "Descubre la magia de los chalets de Gran Lujo en Madrid. Disfruta de una experiencia única en un entorno tranquilo y natural, perfecto para relajarte y disfrutar de la naturaleza.",
         author: "Clement",
         siteUrl: "https://mywebsite.com/",
-        ogImage: "/src/assets/images/og-image.jpg", // Needs to be an absolute path /src/...
+        ogImage: "/src/assets/images/og-image.png", // Needs to be an absolute path /src/...
         locale: "es_ES",
         twitter: { site: "@mywebsite" },
     };
