@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+
+import porcelanosa from '~/assets/images/brands/porcelanosa.png';
+import siemens from '~/assets/images/brands/siemens.png';
+import cortizo from '~/assets/images/brands/cortizo.png';
+import jung from '~/assets/images/brands/jung.png';
+import noken from '~/assets/images/brands/noken.png';
+import krion from '~/assets/images/brands/krion.png';
+import bandalux from '~/assets/images/brands/bandalux.png';
+
+const brands = [
+  { src: porcelanosa, alt: 'Porcelanosa' },
+  { src: siemens, alt: 'Siemens' },
+  { src: cortizo, alt: 'Cortizo' },
+  { src: jung, alt: 'Jung' },
+  { src: noken, alt: 'Noken' },
+  { src: krion, alt: 'Krion' },
+  { src: bandalux, alt: 'Bandalux' },
+];
+---
+
+<section id="marcas" class="py-16 md:py-20 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-10">
+    <div class="text-center scroll-animate">
+      <p class="text-primary font-medium tracking-[0.15em] uppercase text-sm mb-4">Marcas de confianza</p>
+      <h2 class="font-serif text-3xl md:text-4xl text-default">Solo trabajamos con los mejores</h2>
+    </div>
+  </div>
+
+  <!-- Carousel -->
+  <div class="relative">
+    <!-- Gradient Fades -->
+    <div class="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+    <!-- Scrolling Track (duplicated for seamless loop) -->
+    <div class="brand-carousel">
+      {[...brands, ...brands].map((brand) => (
+        <div class="flex-shrink-0 w-40 md:w-48 mx-8 md:mx-12 flex items-center justify-center">
+          <Image
+            src={brand.src}
+            alt={brand.alt}
+            class="h-10 md:h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+            height={48}
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

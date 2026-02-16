@@ -1,0 +1,31 @@
+---
+const stats = [
+  { value: '400+', unit: 'm²', label: 'construidos' },
+  { value: '500-600', unit: 'm²', label: 'de parcela' },
+  { value: 'Clase A', unit: '', label: 'eficiencia energética' },
+  { value: '24h', unit: '', label: 'seguridad privada' },
+  { value: '8×3,5', unit: 'm', label: 'piscina privada' },
+  { value: '3-4', unit: '', label: 'plazas de garaje' },
+];
+---
+
+<section id="cifras" class="py-20 md:py-28 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-16 scroll-animate">
+      <p class="text-primary font-medium tracking-[0.15em] uppercase text-sm mb-4">Cifras clave</p>
+      <h2 class="font-serif text-3xl md:text-4xl text-default">Un proyecto sin precedentes</h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+      {stats.map((stat, i) => (
+        <div class="scroll-animate text-center" data-delay={i * 100}>
+          <div class="text-3xl md:text-4xl font-serif text-default mb-1">
+            {stat.value}
+            {stat.unit && <span class="text-lg text-muted">{stat.unit}</span>}
+          </div>
+          <p class="text-muted text-sm uppercase tracking-wider">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

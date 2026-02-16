@@ -1,7 +1,6 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
-import { Icon } from 'astro-icon/components';
-import type { CollectionEntry } from 'astro:content';
+import CalendarIcon from '~/assets/icons/calendar.svg';
 
 // Data from the markdown frontmater
 // same as a blog post except for the category
@@ -66,7 +65,7 @@ const formatDate = (date: Date) => {
         pubDatetime && (
           <div class="flex flex-wrap gap-4 mt-3 text-sm text-gray-600 mb-8">
             <div class="flex items-center">
-              <Icon name="tabler:calendar" class="w-5 h-5 mr-1" />
+              <CalendarIcon class="w-5 h-5 mr-1" />
               <span>{modDatetime ? formatDate(modDatetime) : formatDate(pubDatetime)}</span>
             </div>
           </div>

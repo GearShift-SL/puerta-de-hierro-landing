@@ -1,0 +1,160 @@
+---
+import { Image } from 'astro:assets';
+import FloorplanCard from './FloorplanCard.astro';
+
+import mainBedroom from '~/assets/images/renders/main-bedroom.jpg';
+import poolView from '~/assets/images/renders/pool-view.png';
+
+import f24a from '~/assets/images/floorplans/F24A-ico.jpg';
+import f24b from '~/assets/images/floorplans/F24B-ico.jpg';
+import f24c from '~/assets/images/floorplans/F24C-ico.jpg';
+import f24d from '~/assets/images/floorplans/F24D-ico.jpg';
+import n19 from '~/assets/images/floorplans/N19-ico.jpg';
+import n21 from '~/assets/images/floorplans/N21-ico.jpg';
+
+const typologies = [
+  {
+    title: 'Dos plantas + sótano',
+    subtitle: 'Viviendas F24',
+    description:
+      'Compuesta por cuatro dormitorios, todos con baño en suite y el principal con vestidor, un despacho en planta baja y garaje para tres o cuatro vehículos, más zona de lavandería en planta sótano. Esta tipología cuenta con solárium en cubierta desde el que disfrutar de unas maravillosas vistas.',
+    image: mainBedroom,
+    imageAlt: 'Dormitorio principal',
+    floorplans: [
+      {
+        href: '/floorplans/F24A.pdf',
+        thumbnail: f24a,
+        label: 'F24A',
+        address: 'Fuentelarreyna 24A',
+        constructedArea: '364,36 m2',
+        plotArea: '608,54 m2',
+        price: '2.915.000 € + IVA',
+        sold: false,
+      },
+      {
+        href: '/floorplans/F24B.pdf',
+        thumbnail: f24b,
+        label: 'F24B',
+        address: 'Fuentelarreyna 24B',
+        constructedArea: '365,50 m2',
+        plotArea: '558,26 m2',
+        price: 'VENDIDO',
+        sold: true,
+      },
+      {
+        href: '/floorplans/F24C.pdf',
+        thumbnail: f24c,
+        label: 'F24C',
+        address: 'Fuentelarreyna 24C',
+        constructedArea: '408,65 m2',
+        plotArea: '535,48 m2',
+        price: '2.942.500 € + IVA',
+        sold: false,
+      },
+      {
+        href: '/floorplans/F24D.pdf',
+        thumbnail: f24d,
+        label: 'F24D',
+        address: 'Fuentelarreyna 24D',
+        constructedArea: '480,49 m2',
+        plotArea: '585,84 m2',
+        price: '3.080.000 € + IVA',
+        sold: false,
+      },
+    ],
+  },
+  {
+    title: 'Tres plantas + sótano',
+    subtitle: 'Viviendas N',
+    description:
+      'Equipada con ascensor, compuesta por tres dormitorios, todos con baño en suite y el principal con vestidor, un despacho en planta baja y garaje para tres vehículos, más zona de lavandería. Además, cuenta con una gran sala para gimnasio o biblioteca con baño en planta superior, desde la que se puede disfrutar de unas magníficas vistas al parque del Pardo y al campo de golf.',
+    image: poolView,
+    imageAlt: 'Vista a la piscina',
+    floorplans: [
+      {
+        href: '/floorplans/N21.pdf',
+        thumbnail: n21,
+        label: 'N21',
+        address: 'Navalmanzano 21',
+        constructedArea: '428,55 m2',
+        plotArea: '510,30 m2',
+        price: 'VENDIDO',
+        sold: true,
+      },
+      {
+        href: '/floorplans/N19.pdf',
+        thumbnail: n19,
+        label: 'N19',
+        address: 'Navalmanzano 19',
+        constructedArea: '399,65 m2',
+        plotArea: '518,80 m2',
+        price: '2.970.000 € + IVA',
+        sold: false,
+      },
+    ],
+  },
+];
+---
+
+<section id="viviendas" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <!-- Header -->
+    <div class="text-center mb-16 scroll-animate">
+      <p class="text-primary font-medium tracking-[0.15em] uppercase text-sm mb-4">Viviendas</p>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-default leading-tight mb-4">
+        Dos tipologías, <br class="hidden md:block" />un mismo estándar de excelencia
+      </h2>
+      <p class="text-muted text-lg max-w-2xl mx-auto">
+        Todas las viviendas cuentan con distintas terrazas que abren los espacios interiores, dotándolos de una gran luminosidad.
+      </p>
+    </div>
+
+    <!-- Typology Blocks -->
+    <div class="space-y-20">
+      {typologies.map((typo, idx) => (
+        <div class="scroll-animate" data-delay="100">
+          <!-- Typology Header with Background Image -->
+          <div class="relative rounded-2xl overflow-hidden mb-8">
+            <Image
+              src={typo.image}
+              alt={typo.imageAlt}
+              class="w-full h-64 md:h-80 object-cover"
+              widths={[640, 1024, 1600]}
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+              <p class="text-white/70 text-sm uppercase tracking-wider mb-1">{typo.subtitle}</p>
+              <h3 class="font-serif text-2xl md:text-3xl text-white">{typo.title}</h3>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <p class="text-muted leading-relaxed mb-8 max-w-3xl">
+            {typo.description}
+          </p>
+
+          <!-- Floorplan Cards -->
+          <div class:list={[
+            'grid gap-4',
+            typo.floorplans.length > 2 ? 'grid-cols-2 md:grid-cols-4' : 'grid-cols-2 md:grid-cols-2 max-w-lg',
+          ]}>
+            {typo.floorplans.map((fp) => (
+              <FloorplanCard
+                href={fp.href}
+                thumbnail={fp.thumbnail}
+                label={fp.label}
+                address={fp.address}
+                constructedArea={fp.constructedArea}
+                plotArea={fp.plotArea}
+                price={fp.price}
+                sold={fp.sold}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

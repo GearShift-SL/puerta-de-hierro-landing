@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+import rooftop from '~/assets/images/renders/rooftop-2.jpg';
+import clementLogo from '~/assets/images/brands/clement.png';
+---
+
+<section id="nosotros" class="relative py-20 md:py-28 overflow-hidden">
+  <Image
+    src={rooftop}
+    alt="Rooftop terraza"
+    class="absolute inset-0 w-full h-full object-cover"
+    widths={[640, 1024, 1600]}
+    sizes="100vw"
+    loading="lazy"
+  />
+  <div class="absolute inset-0 bg-black/60"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="scroll-animate">
+        <p class="text-white/70 font-medium tracking-[0.15em] uppercase text-sm mb-4">Sobre nosotros</p>
+        <div class="flex justify-center my-8">
+          <Image
+            src={clementLogo}
+            alt="Clement Logo"
+            class="h-16 md:h-20 w-auto"
+            widths={[200, 300]}
+            loading="lazy"
+          />
+        </div>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-8">
+          Más de 50 años construyendo hogares
+        </h2>
+        
+      </div>
+
+      <div class="scroll-animate" data-delay="200">
+        <p class="text-white/80 text-lg leading-relaxed mb-8">
+          CLEMENT, con más de 50 años de experiencia en la promoción y construcción de viviendas, es una de las promotoras de mayor solvencia del panorama nacional. Nuestra fortaleza financiera nos permite diseñar y construir proyectos como el que presentamos.
+        </p>
+        <p class="text-white/70 leading-relaxed mb-12">
+          Desde su creación en 1972, en CLEMENT hemos combinado siempre la promoción con la construcción, ejecutando personalmente las obras de nuestras propias promociones. Esto nos permite cuidar hasta el más mínimo detalle.
+        </p>
+      </div>
+
+      <!-- Key Stats -->
+      <div class="scroll-animate flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16" data-delay="400">
+        <div class="text-center">
+          <div class="font-serif text-4xl md:text-5xl text-white mb-1">1972</div>
+          <p class="text-white/60 text-sm uppercase tracking-wider">Año de fundación</p>
+        </div>
+        <div class="hidden sm:block w-px h-16 bg-white/20"></div>
+        <div class="text-center">
+          <div class="font-serif text-4xl md:text-5xl text-white mb-1">1.500+</div>
+          <p class="text-white/60 text-sm uppercase tracking-wider">Viviendas entregadas</p>
+        </div>
+        <div class="hidden sm:block w-px h-16 bg-white/20"></div>
+        <div class="text-center">
+          <div class="font-serif text-4xl md:text-5xl text-white mb-1">50+</div>
+          <p class="text-white/60 text-sm uppercase tracking-wider">Años de experiencia</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

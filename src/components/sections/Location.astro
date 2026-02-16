@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import vistaAerea from '~/assets/images/vista-aerea.jpg';
+
+const proximities = [
+  { label: 'Paseo de la Castellana', detail: 'A escasos minutos' , icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-skyscraper"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l18 0" /><path d="M5 21v-14l8 -4v18" /><path d="M19 21v-10l-6 -4" /><path d="M9 9l0 .01" /><path d="M9 12l0 .01" /><path d="M9 15l0 .01" /><path d="M9 18l0 .01" /></svg>`},
+  { label: 'Real Club Puerta de Hierro', detail: 'Golf y ocio' , icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-golf"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 18v-15l7 4l-7 4" /><path d="M9 17.67c-.62 .36 -1 .82 -1 1.33c0 1.1 1.8 2 4 2s4 -.9 4 -2c0 -.5 -.38 -.97 -1 -1.33" /></svg>`},
+  { label: 'Ruber Internacional', detail: 'Centro sanitario', icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-hospital"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l18 0" /><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" /><path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" /><path d="M10 9l4 0" /><path d="M12 7l0 4" /></svg>` },
+  { label: 'Dehesa de la Villa', detail: 'Parque natural', icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-leaf-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 21c.5 -4.5 2.5 -8 7 -10" /><path d="M7.5 15q -3.5 0 -4.5 -6a8.4 8.4 0 0 1 3.438 .402a12 12 0 0 1 -.052 -.793c0 -3.606 3.204 -5.609 3.204 -5.609s2.003 1.252 2.842 3.557q 2.568 -1.557 6.568 -1.557q .396 3.775 -1.557 6.568c2.305 .839 3.557 2.842 3.557 2.842s-3 2.59 -7 2.59c0 1 0 1 .5 3q -6 0 -7 -5" /></svg>` },
+  { label: 'M30, M40, A6, A1', detail: 'Conexión rápida', icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-road"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 19l4 -14" /><path d="M16 5l4 14" /><path d="M12 8v-2" /><path d="M12 13v-2" /><path d="M12 18v-2" /></svg>` },
+  { label: 'Ciudad Universitaria', detail: 'Centros educativos', icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-school"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" /><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" /></svg>` },
+];
+---
+
+<section id="ubicacion" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Image Column -->
+      <div class="scroll-animate order-2 lg:order-1">
+        <!-- <Image
+          src={vistaAerea}
+          alt="Vista aérea de la urbanización Puerta de Hierro, Madrid"
+          class="w-full rounded-2xl shadow-2xl"
+          widths={[400, 700, 1000]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          loading="lazy"
+        /> -->
+        <iframe src="https://snazzymaps.com/embed/772285" width="100%" height="600px" style="border:none;" class="rounded-2xl shadow-2xl"></iframe>
+      </div>
+
+      <!-- Text Column -->
+      <div class="scroll-animate order-1 lg:order-2" data-delay="200">
+        <p class="text-primary font-medium tracking-[0.15em] uppercase text-sm mb-4">Ubicación</p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-default leading-tight mb-6">
+          Naturaleza y ciudad <br class="hidden md:block" />en perfecto equilibrio
+        </h2>
+        <p class="text-muted text-lg leading-relaxed mb-6">
+          La promoción se ubica en la prestigiosa Urbanización Puerta de Hierro, en un entorno inmejorable y en plena naturaleza dentro del área metropolitana de Madrid Capital.
+        </p>
+        <p class="text-muted leading-relaxed mb-10">
+          Una ubicación privilegiada dotada de todos los servicios: restaurantes, comercios, centros educativos y sanitarios. Todas las comodidades a su alcance, en una zona retirada del bullicio de la capital.
+        </p>
+
+        <!-- Proximity List -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {proximities.map((item) => (
+            <div class="flex items-start gap-3 text-primary">
+              {item.icon && <Fragment set:html={item.icon} />}
+
+              <div>
+                <p class="font-medium text-default text-sm">{item.label}</p>
+                <p class="text-muted text-xs">{item.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

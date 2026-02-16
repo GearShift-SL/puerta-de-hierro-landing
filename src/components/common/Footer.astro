@@ -8,6 +8,7 @@ interface Link {
   href?: string;
   ariaLabel?: string;
   icon?: string;
+  target?: string;
 }
 
 interface Links {
@@ -62,12 +63,13 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
             <div class="font-medium mb-2">{title}</div>
             {links && Array.isArray(links) && links.length > 0 && (
               <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
+                  {links.map(({ text, href, ariaLabel, target = '_self' }) => (
                   <li class="mb-2">
                     <a
                       class="text-muted hover:text-gray-700 hover:underline transition duration-150 ease-in-out"
                       href={href}
                       aria-label={ariaLabel}
+                      target={target}
                     >
                       <Fragment set:html={text} />
                     </a>
@@ -80,14 +82,14 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
       }
 
       <div id="contact-details" class="col-span-6 md:col-span-3 lg:col-span-2">
-        <div class="font-medium mb-2">Contact</div>
+        <div class="font-medium mb-2">Contacto</div>
         <ul class="text-sm">
           <li class="mb-2">
             <a
               href={contactDetails.addressLink}
               class="text-muted hover:text-gray-700 hover:underline transition duration-150 ease-in-out flex items-center gap-2"
             >
-              <MapPinIcon class="w-8 h-8" />
+              <MapPinIcon class="w-6 h-6 shrink-0" />
               <span>{contactDetails.address}</span>
             </a>
           </li>
@@ -96,7 +98,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
               href={`mailto:${contactDetails.email}`}
               class="text-muted hover:text-gray-700 hover:underline transition duration-150 ease-in-out flex items-center gap-2"
             >
-              <MailIcon class="w-8 h-8" />
+              <MailIcon class="w-6 h-6 shrink-0" />
               <span>{contactDetails.email}</span>
             </a>
           </li>

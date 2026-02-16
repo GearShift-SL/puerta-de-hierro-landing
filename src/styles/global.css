@@ -4,22 +4,23 @@
 @theme {
   /* Replace the tailwind sans font with Inter Variable */
   --font-sans: "Inter Variable", sans-serif;
+  --font-serif: "Playfair Display Variable", serif;
 
-  /* Custom colors */
-  --color-primary: #f57c21;
-  --color-secondary: #fba818;
-  --color-default: rgb(16 16 16);
-  --color-muted: rgb(16 16 16 / 66%);
-  --color-page: rgb(255 255 255);
+  /* Custom colors — sophisticated gray-blue palette */
+  --color-primary: #3b5998;
+  --color-secondary: #6b7b8d;
+  --color-default: rgb(26 32 44);
+  --color-muted: rgb(26 32 44 / 60%);
+  --color-page: rgb(249 250 252);
 }
 
 .dark {
-  /* Custom colors */
-  --color-primary: #ca6be6;
-  --color-secondary: #645bc9;
-  --color-accent: #ca6be6;
-  --color-default: rgb(229 236 246);
-  --color-muted: rgb(229 236 246 / 66%);
+  /* Custom colors — sophisticated gray-blue palette */
+  --color-primary: #7ea8d4;
+  --color-secondary: #94a3b8;
+  --color-accent: #7ea8d4;
+  --color-default: rgb(226 232 240);
+  --color-muted: rgb(226 232 240 / 60%);
 }
 
 /* Call to action button styles */
@@ -55,4 +56,51 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
+}
+
+/* Brand carousel infinite scroll */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.brand-carousel {
+  display: flex;
+  animation: scroll 25s linear infinite;
+}
+
+.brand-carousel:hover {
+  animation-play-state: paused;
+}
+
+/* Scroll animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-in-up animation for hero */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
 }

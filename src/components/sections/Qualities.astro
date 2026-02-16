@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets';
+import mainBath from '~/assets/images/renders/main-bath.jpg';
+import secondaryBath from '~/assets/images/renders/secondary-bath.jpg';
+
+const features = [
+  {
+    title: 'Aerotermia',
+    description: 'Suelo radiante en invierno y refrescante en verano. Máximo confort y máxima eficiencia energética.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-thermometer"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 5a2.828 2.828 0 0 1 0 4l-8 8h-4v-4l8 -8a2.828 2.828 0 0 1 4 0" /><path d="M16 7l-1.5 -1.5" /><path d="M13 10l-1.5 -1.5" /><path d="M10 13l-1.5 -1.5" /><path d="M7 17l-3 3" /></svg>`,
+  },
+  {
+    title: 'Energía Solar',
+    description: 'Placas térmicas de captación solar de apoyo al ACS para mayor eficiencia y menor consumo.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 19a1 1 0 0 1 1 1v2a1 1 0 0 1 -2 0v-2a1 1 0 0 1 1 -1m-4.95 -2.05a1 1 0 0 1 0 1.414l-1.414 1.414a1 1 0 1 1 -1.414 -1.414l1.414 -1.414a1 1 0 0 1 1.414 0m11.314 0l1.414 1.414a1 1 0 0 1 -1.414 1.414l-1.414 -1.414a1 1 0 0 1 1.414 -1.414m-5.049 -9.836a5 5 0 1 1 -2.532 9.674a5 5 0 0 1 2.532 -9.674m-9.315 3.886a1 1 0 0 1 0 2h-2a1 1 0 0 1 0 -2zm18 0a1 1 0 0 1 0 2h-2a1 1 0 0 1 0 -2zm-16.364 -6.778l1.414 1.414a1 1 0 0 1 -1.414 1.414l-1.414 -1.414a1 1 0 0 1 1.414 -1.414m14.142 0a1 1 0 0 1 0 1.414l-1.414 1.414a1 1 0 0 1 -1.414 -1.414l1.414 -1.414a1 1 0 0 1 1.414 0m-7.778 -3.222a1 1 0 0 1 1 1v2a1 1 0 0 1 -2 0v-2a1 1 0 0 1 1 -1" /></svg>`,
+  },
+  {
+    title: 'Carpintería CORTIZO',
+    description: 'Aluminio minimalista con grandes ventanales. Vidrios bajo emisivos de muy baja transmisión térmica y acústica.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-window"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c-3.866 0 -7 3.272 -7 7v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1 -1v-10c0 -3.728 -3.134 -7 -7 -7" /><path d="M5 13l14 0" /><path d="M12 3l0 18" /></svg>`,
+  },
+  {
+    title: 'Persianas GRIESSER',
+    description: 'Persianas graduables motorizadas para máximo rendimiento de luz solar y eficiencia térmica.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-crop-landscape"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 8a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -8" /></svg>`,
+  },
+  {
+    title: 'Cocina PORCELANOSA',
+    description: 'Totalmente equipada en tonos blancos y roble con isla, encimera porcelánica y electrodomésticos SIEMENS.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chef-hat"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c1.918 0 3.52 1.35 3.91 3.151a4 4 0 0 1 2.09 7.723l0 7.126h-12v-7.126a4 4 0 1 1 2.092 -7.723a4 4 0 0 1 3.908 -3.151" /><path d="M6.161 17.009l11.839 -.009" /></svg>`,
+  },
+  {
+    title: 'Domótica JUNG HOME',
+    description: 'Control inteligente de persianas, iluminación, climatización y videoportero desde su smartphone.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home-link"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20.085 11.085l-8.085 -8.085l-9 9h2v7a2 2 0 0 0 2 2h4.5" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 1.807 1.143" /><path d="M20 21a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M20 16a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M15 19a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M21 16l-5 3l5 2" /></svg>`,
+  },
+  {
+    title: 'Seguridad Integral',
+    description: 'Puerta acorazada antibumping, alarma con detectores fotovoluméticos y seguridad 24h con acuda.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shield"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /></svg>`,
+  },
+  {
+    title: 'Piscina Privada',
+    description: 'Piscina de 8×3,5m con cloración salina, dosificador automático de PH y focos LED de bajo consumo.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-pool"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 20a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1" /><path d="M2 16a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1" /><path d="M15 12v-7.5a1.5 1.5 0 0 1 3 0" /><path d="M9 12v-7.5a1.5 1.5 0 0 0 -3 0" /><path d="M15 5l-6 0" /><path d="M9 10l6 0" /></svg>`,
+  },
+];
+---
+
+<section id="calidades" class="py-20 md:py-28 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <!-- Header -->
+    <div class="text-center mb-16 scroll-animate">
+      <p class="text-primary font-medium tracking-[0.15em] uppercase text-sm mb-4">Calidades</p>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-default leading-tight mb-4">
+        Las mejores marcas,<br class="hidden md:block" /> los mejores materiales
+      </h2>
+      <p class="text-muted text-lg max-w-2xl mx-auto">
+        Cada detalle ha sido cuidadosamente seleccionado para ofrecer un hogar de calidad excepcional.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      {features.map((feature, i) => (
+        <div class="scroll-animate bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow" data-delay={i * 75}>
+          
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center mb-4">
+            {feature.icon && <Fragment set:html={feature.icon} />}
+          </div>
+          <h3 class="font-semibold text-default mb-2">{feature.title}</h3>
+          <p class="text-muted text-sm leading-relaxed">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bath Renders -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="scroll-animate" data-delay="100">
+        <Image
+          src={mainBath}
+          alt="Baño principal de lujo"
+          class="w-full rounded-2xl shadow-lg"
+          widths={[400, 700]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
+      <div class="scroll-animate" data-delay="200">
+        <Image
+          src={secondaryBath}
+          alt="Baño secundario"
+          class="w-full rounded-2xl shadow-lg"
+          widths={[400, 700]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>

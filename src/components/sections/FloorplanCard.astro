@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+export interface Props {
+  href: string;
+  thumbnail: ImageMetadata;
+  label: string;
+  address?: string;
+  constructedArea?: string;
+  plotArea?: string;
+  price?: string;
+  sold?: boolean;
+}
+
+const { href, thumbnail, label, address, constructedArea, plotArea, price, sold = false } = Astro.props;
+---
+
+<a
+  href={sold ? undefined : href}
+  target={sold ? undefined : "_blank"}
+  rel={sold ? undefined : "noopener noreferrer"}
+  class:list={[
+    "group block bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300",
+    sold ? "opacity-80 cursor-default" : "hover:shadow-xl hover:-translate-y-1",
+  ]}
+>
+  <div class="relative aspect-[4/3] overflow-hidden">
+    <Image
+      src={thumbnail}
+      alt={`Plano ${label}`}
+      class:list={[
+        "w-full h-full object-cover transition-transform duration-500",
+        sold ? "brightness-50" : "group-hover:scale-105",
+      ]}
+      widths={[300, 500]}
+      sizes="(max-width: 768px) 50vw, 25vw"
+      loading="lazy"
+    />
+    {sold && (
+      <div class="absolute inset-0 flex items-center justify-center bg-black/50">
+        <span class="font-serif text-white text-2xl md:text-3xl tracking-wider italic">VENDIDO</span>
+      </div>
+    )}
+  </div>
+
+  <div class="p-4 space-y-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-sm md:text-base text-default uppercase tracking-wide">{address || label}</span>
+      {!sold && (
+        <svg class="w-4 h-4 text-muted group-hover:text-primary transition-colors flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+        </svg>
+      )}
+    </div>
+
+    {(constructedArea || plotArea) && (
+      <div class="text-xs text-muted space-y-0.5">
+        {constructedArea && (
+          <p><span class="uppercase tracking-wider font-medium text-default/70">Superficie construida:</span> {constructedArea}</p>
+        )}
+        {plotArea && (
+          <p><span class="uppercase tracking-wider font-medium text-default/70">Superficie parcela:</span> {plotArea}</p>
+        )}
+      </div>
+    )}
+
+    {price && (
+      <p class:list={[
+        "text-sm font-bold",
+        sold ? "text-muted" : "text-primary",
+      ]}>
+        {sold ? "PRECIO: VENDIDO" : `PRECIO: ${price}`}
+      </p>
+    )}
+  </div>
+</a>

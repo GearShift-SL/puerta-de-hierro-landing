@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import livingRoom from '~/assets/images/renders/living-room.jpg';
+import dossierFront from '~/assets/images/dossier-front.jpg';
+---
+
+<section id="introduccion" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Text Column -->
+      <div class="scroll-animate">
+        <p class="text-primary font-medium tracking-[0.15em] uppercase text-sm mb-4">Gold Home</p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-default leading-tight mb-6">
+          El lujo de vivir en <br class="hidden md:block" />Puerta de Hierro
+        </h2>
+        <p class="text-muted text-lg leading-relaxed mb-10">
+          CLEMENT Puerta de Hierro es una promoción compuesta por 6 chalets Gran Lujo de la línea GOLD HOME, pareados dos a dos, de más de 400 m² construidos cada uno, en parcela de 500 m² aprox. con piscina individual y garaje privado.
+        </p>
+        <!-- Dossier Download -->
+        <div class="flex items-center gap-6 p-6 bg-stone-50 rounded-2xl">
+          <Image
+            src={dossierFront}
+            alt="Dossier CLEMENT Puerta de Hierro"
+            class="w-24 h-32 object-cover rounded-lg shadow-md hidden sm:block"
+            width={96}
+          />
+          <div>
+            <p class="font-medium text-default mb-2">Dossier informativo</p>
+            <p class="text-muted text-sm mb-3">Descarga toda la información sobre la promoción.</p>
+            <a
+              href="/AF_Dossier Puerta de Hierro.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-gradient inline-flex items-center gap-2 text-sm !px-6 !py-2.5"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              Descargar dossier
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Column -->
+      <div class="scroll-animate" data-delay="200">
+        <Image
+          src={livingRoom}
+          alt="Salón de lujo en CLEMENT Puerta de Hierro"
+          class="w-full rounded-2xl shadow-2xl"
+          widths={[400, 700, 1000]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>

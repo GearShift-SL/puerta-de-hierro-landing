@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import antes from '~/assets/images/piso_a_medida_antes.png';
+import despues from '~/assets/images/piso_a_medida_despues.png';
+---
+
+<section id="personaliza" class="py-20 md:py-28 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Before/After Comparison Slider -->
+      <div class="scroll-animate">
+        <div class="rounded-xl overflow-hidden shadow-lg">
+          <img-comparison-slider class="comparison-slider">
+            <Image
+              slot="first"
+              src={antes}
+              alt="Vivienda antes de personalizar"
+              class="w-full"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              loading="lazy"
+            />
+            <Image
+              slot="second"
+              src={despues}
+              alt="Vivienda después de personalizar"
+              class="w-full"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              loading="lazy"
+            />
+          </img-comparison-slider>
+        </div>
+        <div class="flex justify-between mt-3 px-1">
+          <p class="text-xs text-muted uppercase tracking-wider font-medium">Antes</p>
+          <p class="text-xs text-muted uppercase tracking-wider font-medium">Después</p>
+        </div>
+      </div>
+
+      <!-- Text Column -->
+      <div class="scroll-animate" data-delay="200">
+        <p class="text-primary font-medium tracking-[0.15em] uppercase text-sm mb-4">Personalización</p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-default leading-tight mb-6">
+          Vivienda a medida
+        </h2>
+        <p class="text-muted text-lg leading-relaxed mb-6">
+          En CLEMENT ponemos a su disposición un equipo de profesionales para que pueda adaptar las viviendas de nuestras promociones a sus necesidades.
+        </p>
+        <p class="text-muted leading-relaxed mb-6">
+          Uno de nuestros técnicos se reunirá con cada uno de los clientes para escuchar sus propuestas y asesorarle en todos aquellos cambios que quiera realizar en su nueva vivienda.
+        </p>
+        <p class="text-muted leading-relaxed">
+          En cada proyecto, además del Jefe de Obra y todo el personal que coopera con él, contamos con varias personas encargadas únicamente de supervisar la ejecución de los cambios solicitados por nuestros clientes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import 'img-comparison-slider';
+</script>
+
+<style>
+  .comparison-slider {
+    --divider-width: 4px;
+    --divider-color: #000;
+    --default-handle-opacity: 1;
+    --default-handle-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    --default-handle-width: 44px;
+    --default-handle-color: #000;
+  }
+</style>
