@@ -29,6 +29,14 @@ import despues from '~/assets/images/piso_a_medida_despues.png';
               sizes="(max-width: 1024px) 100vw, 50vw"
               loading="lazy"
             />
+            <div slot="handle" class="custom-handle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
           </img-comparison-slider>
         </div>
         <div class="flex justify-between mt-3 px-1">
@@ -64,10 +72,19 @@ import despues from '~/assets/images/piso_a_medida_despues.png';
 <style>
   .comparison-slider {
     --divider-width: 4px;
-    --divider-color: #000;
-    --default-handle-opacity: 1;
-    --default-handle-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-    --default-handle-width: 44px;
-    --default-handle-color: #000;
+    --divider-color: #3b5998;
+    --default-handle-opacity: 0;
+  }
+
+  .custom-handle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #3b5998;
+    color: white;
+    border-radius: 999px;
+    padding: 6px 8px;
+    box-shadow: 0 0 10px rgba(59, 89, 152, 0.5);
+    cursor: ew-resize;
   }
 </style>
