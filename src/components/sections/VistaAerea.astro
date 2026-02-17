@@ -1,15 +1,21 @@
 ---
 import { Image } from 'astro:assets';
 import vistaAerea from '~/assets/images/vista-aerea.jpg';
+import { houses, typologies, roundedArea, availableCount } from '~/data/houses';
 
-const houses = [
-  { label: 'F24A', type: 'F24', address: 'Fuentelarreyna 24A', area: '364 m²', plot: '609 m²', status: 'Disponible' },
-  { label: 'F24B', type: 'F24', address: 'Fuentelarreyna 24B', area: '366 m²', plot: '558 m²', status: 'Vendido' },
-  { label: 'F24C', type: 'F24', address: 'Fuentelarreyna 24C', area: '409 m²', plot: '535 m²', status: 'Disponible' },
-  { label: 'F24D', type: 'F24', address: 'Fuentelarreyna 24D', area: '480 m²', plot: '586 m²', status: 'Disponible' },
-  { label: 'N21', type: 'N', address: 'Navalmanzano 21', area: '429 m²', plot: '510 m²', status: 'Vendido' },
-  { label: 'N19', type: 'N', address: 'Navalmanzano 19', area: '400 m²', plot: '519 m²', status: 'Disponible' },
-];
+/** Derive the summary rows from the centralized house data */
+const tableRows = houses.map((h) => {
+  const typo = typologies.find((t) => t.type === h.type)!;
+  return {
+    label: h.label,
+    type: h.type,
+    typeLabel: typo.title,
+    address: h.address,
+    area: roundedArea(h.constructedArea),
+    plot: roundedArea(h.plotArea),
+    status: h.sold ? 'Vendido' : 'Disponible',
+  };
+});
 
 const highlights = [
   {
@@ -72,7 +78,7 @@ const highlights = [
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
             </span>
-            <span class="text-white text-xs font-medium tracking-wide">4 disponibles</span>
+            <span class="text-white text-xs font-medium tracking-wide">{availableCount} disponibles</span>
           </div>
         </div>
       </div>
@@ -107,7 +113,7 @@ const highlights = [
             </tr>
           </thead>
           <tbody class="divide-y divide-stone-100">
-            {houses.map((house) => (
+            {tableRows.map((house) => (
               <tr class="hover:bg-stone-50/50 transition-colors">
                 <td class="px-6 py-4 font-semibold text-default">{house.label}</td>
                 <td class="px-6 py-4 text-muted">
@@ -115,7 +121,7 @@ const highlights = [
                     'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium',
                     house.type === 'F24' ? 'bg-blue-50 text-blue-700' : 'bg-amber-50 text-amber-700',
                   ]}>
-                    {house.type === 'F24' ? '2 plantas + sótano' : '3 plantas + sótano'}
+                    {house.typeLabel}
                   </span>
                 </td>
                 <td class="px-6 py-4 text-muted text-sm">{house.address}</td>
@@ -142,7 +148,7 @@ const highlights = [
 
       <!-- Mobile cards -->
       <div class="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {houses.map((house) => (
+        {tableRows.map((house) => (
           <div class="bg-white rounded-xl p-5 shadow-sm border border-stone-100">
             <div class="flex items-center justify-between mb-3">
               <span class="font-semibold text-default text-lg">{house.label}</span>
@@ -163,7 +169,7 @@ const highlights = [
               'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium mb-3',
               house.type === 'F24' ? 'bg-blue-50 text-blue-700' : 'bg-amber-50 text-amber-700',
             ]}>
-              {house.type === 'F24' ? '2 plantas + sótano' : '3 plantas + sótano'}
+              {house.typeLabel}
             </span>
             <div class="flex gap-4 pt-3 border-t border-stone-100">
               <div>
@@ -194,4 +200,3 @@ const highlights = [
     </div>
   </div>
 </section>
-
