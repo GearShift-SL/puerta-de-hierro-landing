@@ -1,8 +1,8 @@
-# robots.txt for https://mywebsite.com
+# robots.txt for https://clementpuertadehierro.com
 
 User-agent: *
 Disallow: /cdn-cgi/
 Allow: /
 
 # Sitemaps
-Sitemap: https://mywebsite.com/sitemap-index.xml 
+Sitemap: https://clementpuertadehierro.com/sitemap-index.xml 
