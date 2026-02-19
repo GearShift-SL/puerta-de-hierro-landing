@@ -132,16 +132,16 @@ export const typologies: Typology[] = [
   {
     type: '2',
     title: 'Dos plantas + sótano',
-    subtitle: 'Viviendas F24',
+    subtitle: '',
     description:
-      'Compuesta por cuatro dormitorios, todos con baño en suite y el principal con vestidor, un despacho en planta baja y garaje para tres o cuatro vehículos, más zona de lavandería en planta sótano. Esta tipología cuenta con solárium en cubierta desde el que disfrutar de unas maravillosas vistas.',
+      'Compuesta por cuatro dormitorios, todos con baño en suite y el principal con vestidor, un despacho en planta baja y garaje para tres o cuatro vehículos, más zona de lavandería en la cubierta o en la planta sótano. Esta tipología cuenta con solárium en cubierta desde el que disfrutar de unas maravillosas vistas.',
     image: mainBedroom,
     imageAlt: 'Dormitorio principal',
   },
   {
     type: '3',
     title: 'Tres plantas + sótano',
-    subtitle: 'Viviendas N',
+    subtitle: '',
     description:
       'Equipada con ascensor, compuesta por tres dormitorios, todos con baño en suite y el principal con vestidor, un despacho en planta baja y garaje para tres vehículos, más zona de lavandería. Además, cuenta con una gran sala para gimnasio o biblioteca con baño en planta superior, desde la que se puede disfrutar de unas magníficas vistas al parque del Pardo y al campo de golf.',
     image: poolView,
