@@ -62,7 +62,7 @@ export interface Typology {
 export const houses: House[] = [
   {
     label: 'F24A',
-    type: '2',
+    type: '3',
     address: 'Fuentelarreina 24A',
     constructedArea: '364,36 m²',
     plotArea: '608,54 m²',
@@ -73,7 +73,7 @@ export const houses: House[] = [
   },
   {
     label: 'F24B',
-    type: '2',
+    type: '3',
     address: 'Fuentelarreina 24B',
     constructedArea: '365,50 m²',
     plotArea: '558,26 m²',
@@ -106,7 +106,7 @@ export const houses: House[] = [
   },
   {
     label: 'N21',
-    type: '3',
+    type: '2',
     address: 'Navalmanzano 21',
     constructedArea: '428,55 m²',
     plotArea: '510,30 m²',
@@ -117,7 +117,7 @@ export const houses: House[] = [
   },
   {
     label: 'N19',
-    type: '3',
+    type: '2',
     address: 'Navalmanzano 19',
     constructedArea: '399,65 m²',
     plotArea: '518,80 m²',
@@ -167,4 +167,3 @@ export function roundedArea(precise: string): string {
 
 /** Number of houses that are still available (not sold) */
 export const availableCount: number = houses.filter((h) => !h.sold).length;
-
