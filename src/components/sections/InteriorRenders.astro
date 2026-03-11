@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import mainBedroom from '~/assets/images/renders/main-bedroom.jpg';
 import mainBath from '~/assets/images/renders/main-bath.jpg';
 import secondaryBath from '~/assets/images/renders/secondary-bath.jpg';
 import kitchen2 from '~/assets/images/renders/kitchen-2.jpg';
@@ -11,6 +12,18 @@ import secondaryBedroom from '~/assets/images/renders/secondary-bredroom.jpg';
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="text-center mb-8 scroll-animate">
       <p class="text-muted text-lg">Descubre cada espacio en detalle</p>
+    </div>
+
+    <div class="mb-6 scroll-animate">
+      <Image
+        src={mainBedroom}
+        alt="Dormitorio principal con vistas"
+        class="w-full aspect-21/9 object-cover rounded-2xl shadow-lg"
+        widths={[600, 1000, 1400]}
+        sizes="(max-width: 768px) 100vw, 1280px"
+        loading="lazy"
+      />
+      <p class="text-muted text-sm mt-3 text-center">Dormitorio principal</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
