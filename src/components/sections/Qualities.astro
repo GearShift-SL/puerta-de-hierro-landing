@@ -1,8 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import mainBath from '~/assets/images/renders/main-bath.jpg';
-import secondaryBath from '~/assets/images/renders/secondary-bath.jpg';
-
 const features = [
   {
     title: 'Aerotermia',
@@ -79,30 +75,6 @@ const features = [
           </div>
         ))
       }
-    </div>
-
-    <!-- Bath Renders -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="scroll-animate" data-delay="100">
-        <Image
-          src={mainBath}
-          alt="Baño principal de lujo"
-          class="w-full rounded-2xl shadow-lg"
-          widths={[400, 700]}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          loading="lazy"
-        />
-      </div>
-      <div class="scroll-animate" data-delay="200">
-        <Image
-          src={secondaryBath}
-          alt="Baño secundario"
-          class="w-full rounded-2xl shadow-lg"
-          widths={[400, 700]}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          loading="lazy"
-        />
-      </div>
     </div>
   </div>
 </section>

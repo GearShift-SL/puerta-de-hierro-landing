@@ -15,11 +15,14 @@ import AboutClement from '~/components/sections/AboutClement.astro';
 import Contact from '~/components/sections/Contact.astro';
 import Sustainability from '~/components/sections/Sustainability.astro';
 import VistaAerea from '~/components/sections/VistaAerea.astro';
+import InteriorRenders from '~/components/sections/InteriorRenders.astro';
 
 // Divider images
 import poolViewSunset from '~/assets/images/renders/pool-view-sunset.png';
 import kitchen from '~/assets/images/renders/kitchen.jpg';
 import rooftop1 from '~/assets/images/renders/rooftop-1.jpg';
+import mainEntrance from '~/assets/images/renders/main-entrance.jpg';
+import homeCinema from '~/assets/images/renders/home-cinema.jpg';
 ---
 
 <PageLayout
@@ -132,11 +135,24 @@ import rooftop1 from '~/assets/images/renders/rooftop-1.jpg';
   <!-- 5. Vista Aérea / Development Overview -->
   <VistaAerea />
 
+  <!-- Divider: Main Entrance -->
+  <FullBleedDivider
+    image={mainEntrance}
+    alt="Entrada principal del chalet"
+    quote="Diseñado para impresionar desde el primer momento"
+  />
+
   <!-- 6. Location -->
   <Location />
 
   <!-- 6. Qualities / Features -->
   <Qualities />
+
+  <!-- Divider: Home Cinema -->
+  <FullBleedDivider image={homeCinema} alt="Sala de cine privada" quote="Espacios pensados para vivir y disfrutar" />
+
+  <!-- Interior Renders Gallery -->
+  <InteriorRenders />
 
   <!-- 7. Divider: Kitchen -->
   <FullBleedDivider image={kitchen} alt="Cocina de diseño" quote="Cada detalle pensado para ti" />
