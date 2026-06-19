@@ -1,4 +1,6 @@
 ---
+import { OPEN } from '~/config';
+import Layout from '~/layouts/Layout.astro';
 import PageLayout from '~/layouts/PageLayout.astro';
 import heroVideo from '~/assets/videos/hero.mp4';
 import Logo from '~/assets/icons/logo.svg';
@@ -27,7 +29,15 @@ import mainEntrance from '~/assets/images/renders/main-entrance.jpg';
 import homeCinema from '~/assets/images/renders/home-cinema.jpg';
 ---
 
-<PageLayout
+{!OPEN && (
+  <Layout>
+    <div class="min-h-screen flex items-center justify-center bg-white">
+      <p class="font-serif text-2xl text-gray-700 tracking-wide">Página web en construcción</p>
+    </div>
+  </Layout>
+)}
+
+{OPEN && <PageLayout
   metadata={{
     title: 'CLEMENT Puerta de Hierro - Chalets de Gran Lujo en Madrid',
     description:
@@ -240,4 +250,5 @@ import homeCinema from '~/assets/images/renders/home-cinema.jpg';
       }
     })();
   </script>
-</PageLayout>
+</PageLayout>}
+

@@ -1,3 +1,5 @@
+export const OPEN = false;
+
 type SiteConfig = {
     title: string;
     description: string;

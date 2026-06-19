@@ -1,4 +1,6 @@
 ---
+import { OPEN } from '~/config';
+import Layout from '~/layouts/Layout.astro';
 import PageLayout from '~/layouts/PageLayout.astro';
 import CalendarIcon from '~/assets/icons/calendar.svg';
 
@@ -41,7 +43,15 @@ const formatDate = (date: Date) => {
 };
 ---
 
-<PageLayout metadata={metadata}>
+{!OPEN && (
+  <Layout>
+    <div class="min-h-screen flex items-center justify-center bg-white">
+      <p class="font-serif text-2xl text-gray-700 tracking-wide">Página web en construcción</p>
+    </div>
+  </Layout>
+)}
+
+{OPEN && <PageLayout metadata={metadata}>
   <div class="relative">
     <!-- Table of Contents - Only visible on xl screens and above (1340px+) -->
     <div
@@ -83,7 +93,7 @@ const formatDate = (date: Date) => {
       </div>
     </div>
   </div>
-</PageLayout>
+</PageLayout>}
 
 <script is:inline>
   /** Attaches links to headings in the document,
