@@ -1,4 +1,4 @@
-export const OPEN = false;
+export const OPEN = true;
 
 type SiteConfig = {
     title: string;
