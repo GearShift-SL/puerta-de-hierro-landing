@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { SHOW_PRICES } from '~/config';
 
 export interface Props {
   href: string;
@@ -65,7 +66,7 @@ const { href, thumbnail, label, address, constructedArea, plotArea, price, sold 
       </div>
     )}
 
-    {price && (
+    {SHOW_PRICES && price && (
       <p class:list={[
         "text-sm font-bold",
         sold ? "text-muted" : "text-primary",
