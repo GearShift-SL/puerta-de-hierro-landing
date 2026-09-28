@@ -54,11 +54,11 @@ const features = [
     </div>
 
     <!-- Features Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+    <div class="flex flex-wrap justify-center gap-6 mb-16">
       {
         features.map((feature, i) => (
           <div
-            class="scroll-animate bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
+            class="scroll-animate w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
             data-delay={i * 75}
           >
             <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center mb-4">

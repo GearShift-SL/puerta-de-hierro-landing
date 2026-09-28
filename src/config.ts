@@ -58,9 +58,9 @@ type NavigationConfig = {
 
 export const SITE = (): SiteConfig => {
   return {
-    title: 'CLEMENT Puerta de Hierro - Chalets de Gran Lujo en Madrid',
+    title: 'CLEMENT Puerta de Hierro - Chalets en Madrid',
     description:
-      'Descubre la magia de los chalets de Gran Lujo en Madrid. Disfruta de una experiencia única en un entorno tranquilo y natural, perfecto para relajarte y disfrutar de la naturaleza.',
+      'Descubre la magia de los chalets de lujo en Madrid. Disfruta de una experiencia única en un entorno tranquilo y natural, perfecto para relajarte y disfrutar de la naturaleza.',
     author: 'Clement',
     siteUrl: 'https://clementpuertadehierro.com/',
     ogImage: '/src/assets/images/og-image.png', // Needs to be an absolute path /src/...
